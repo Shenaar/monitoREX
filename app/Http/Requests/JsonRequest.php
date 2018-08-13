@@ -12,16 +12,10 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  *
  */
-abstract class WebApiRequest extends FormRequest
+abstract class JsonRequest extends FormRequest
 {
-
     /**
-     * Handle a failed validation attempt.
-     *
-     * @param  \Illuminate\Contracts\Validation\Validator  $validator
-     * @return void
-     *
-     * @throws \Illuminate\Validation\ValidationException
+     * @inheritdoc
      */
     protected function failedValidation(Validator $validator)
     {

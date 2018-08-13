@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\WebApi\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\LoginRequestWeb;
+use App\Http\Requests\WebApi\LoginRequest;
 use App\Models\User;
 use App\Services\Auth\Contracts\Registrar;
 
@@ -33,12 +33,12 @@ class LoginController extends Controller
     }
 
     /**
-     * @param LoginRequestWeb $request
+     * @param LoginRequest $request
      * @param Hasher $hasher
      *
      * @return \App\Models\User
      */
-    public function login(LoginRequestWeb $request, Hasher $hasher)
+    public function login(LoginRequest $request, Hasher $hasher)
     {
         $user = $this->registrar->getUserByLogin($request->get('login'));
         $password = $request->get('password');

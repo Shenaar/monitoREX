@@ -7,7 +7,7 @@ use App\Models\AbstractModel;
 /**
  *
  */
-abstract class AbstractRepository
+abstract class EloquentRepository
 {
     /**
      * @var AbstractModel
@@ -20,6 +20,10 @@ abstract class AbstractRepository
     public function __construct(AbstractModel $model = null)
     {
         $this->model = $model ? : $this->getModel();
+
+        if (!$this->model instanceof AbstractModel) {
+            throw new \InvalidArgumentException('Model should be an instance of AbstractModel');
+        }
     }
 
     /**
@@ -68,6 +72,14 @@ abstract class AbstractRepository
         $model->save();
 
         return $model;
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function getQuery()
+    {
+        return $this->model->newQuery();
     }
 
     /**

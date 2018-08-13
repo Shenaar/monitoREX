@@ -2,14 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
-class Project extends Model
+class Project extends AbstractModel
 {
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo|User
      */
-    public function owner()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }

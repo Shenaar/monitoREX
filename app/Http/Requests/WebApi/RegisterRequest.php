@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Auth;
+namespace App\Http\Requests\WebApi;
 
-use App\Http\Requests\WebApiRequest;
+use App\Http\Requests\JsonRequest;
 use App\Rules\Password;
 
-class RegisterRequestWeb extends WebApiRequest
+class RegisterRequest extends JsonRequest
 {
     /**
      * Determine if the user is authorized to make this request.

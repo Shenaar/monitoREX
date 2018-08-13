@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\WebApi\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\RegisterRequestWeb;
+use App\Http\Requests\WebApi\RegisterRequest;
 use App\Services\Auth\Contracts\Registrar;
 use App\Services\Auth\Exceptions\LoginExistsException;
 
@@ -48,13 +48,13 @@ class RegisterController extends Controller
     }
 
     /**
-     * @param RegisterRequestWeb $request
+     * @param RegisterRequest $request
      *
      * @return \App\Models\User
      *
      * @throws HttpResponseException if the login exists
      */
-    public function register(RegisterRequestWeb $request)
+    public function register(RegisterRequest $request)
     {
         try {
             $user = $this->registrar->register(

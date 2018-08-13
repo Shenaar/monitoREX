@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Auth;
+namespace App\Http\Requests\WebApi;
 
-use App\Http\Requests\WebApiRequest;
+use Illuminate\Foundation\Http\FormRequest;
 
-class LoginRequestWeb extends WebApiRequest
+class CreateProjectRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class LoginRequestWeb extends WebApiRequest
     public function rules()
     {
         return [
-            'login'    => 'required',
-            'password' => 'required',
+            'title'  => 'required',
+            'domain' => 'required',
         ];
     }
 }

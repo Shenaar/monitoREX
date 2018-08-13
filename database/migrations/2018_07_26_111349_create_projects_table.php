@@ -16,7 +16,7 @@ class CreateProjectsTable extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string('name');
+            $table->string('title');
             $table->string('domain');
             $table->integer('user_id')->unsigned()->index();
             $table->string('api_key')->unique();

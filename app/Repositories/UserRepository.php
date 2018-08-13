@@ -7,7 +7,7 @@ use App\Models\User;
 /**
  *
  */
-class UserRepository extends AbstractRepository
+class UserRepository extends EloquentRepository
 {
     /**
      * @param string $login
