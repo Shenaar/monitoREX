@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2018-08-09 09:06:16.
+    * Generated on 2018-08-13 10:50:08.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -39,6 +39,7 @@ namespace PHPSTORM_META {
         'view' => \Illuminate\View\Factory::class,
         'view.finder' => \Illuminate\View\FileViewFinder::class,
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
+        'Shenaar\DBProfiler\QueryFormatter' => \Shenaar\DBProfiler\QueryFormatter::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'App\Services\Auth\Contracts\Registrar' => \App\Services\Auth\UserRegistrar::class,
         'Illuminate\Console\Scheduling\Schedule' => \Illuminate\Console\Scheduling\Schedule::class,
@@ -175,6 +176,7 @@ namespace PHPSTORM_META {
         'view' => \Illuminate\View\Factory::class,
         'view.finder' => \Illuminate\View\FileViewFinder::class,
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
+        'Shenaar\DBProfiler\QueryFormatter' => \Shenaar\DBProfiler\QueryFormatter::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'App\Services\Auth\Contracts\Registrar' => \App\Services\Auth\UserRegistrar::class,
         'Illuminate\Console\Scheduling\Schedule' => \Illuminate\Console\Scheduling\Schedule::class,
@@ -311,6 +313,7 @@ namespace PHPSTORM_META {
         'view' => \Illuminate\View\Factory::class,
         'view.finder' => \Illuminate\View\FileViewFinder::class,
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
+        'Shenaar\DBProfiler\QueryFormatter' => \Shenaar\DBProfiler\QueryFormatter::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'App\Services\Auth\Contracts\Registrar' => \App\Services\Auth\UserRegistrar::class,
         'Illuminate\Console\Scheduling\Schedule' => \Illuminate\Console\Scheduling\Schedule::class,
@@ -447,6 +450,7 @@ namespace PHPSTORM_META {
         'view' => \Illuminate\View\Factory::class,
         'view.finder' => \Illuminate\View\FileViewFinder::class,
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
+        'Shenaar\DBProfiler\QueryFormatter' => \Shenaar\DBProfiler\QueryFormatter::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'App\Services\Auth\Contracts\Registrar' => \App\Services\Auth\UserRegistrar::class,
         'Illuminate\Console\Scheduling\Schedule' => \Illuminate\Console\Scheduling\Schedule::class,
@@ -583,6 +587,7 @@ namespace PHPSTORM_META {
         'view' => \Illuminate\View\Factory::class,
         'view.finder' => \Illuminate\View\FileViewFinder::class,
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
+        'Shenaar\DBProfiler\QueryFormatter' => \Shenaar\DBProfiler\QueryFormatter::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'App\Services\Auth\Contracts\Registrar' => \App\Services\Auth\UserRegistrar::class,
         'Illuminate\Console\Scheduling\Schedule' => \Illuminate\Console\Scheduling\Schedule::class,
@@ -719,6 +724,7 @@ namespace PHPSTORM_META {
         'view' => \Illuminate\View\Factory::class,
         'view.finder' => \Illuminate\View\FileViewFinder::class,
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
+        'Shenaar\DBProfiler\QueryFormatter' => \Shenaar\DBProfiler\QueryFormatter::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'App\Services\Auth\Contracts\Registrar' => \App\Services\Auth\UserRegistrar::class,
         'Illuminate\Console\Scheduling\Schedule' => \Illuminate\Console\Scheduling\Schedule::class,
@@ -855,6 +861,7 @@ namespace PHPSTORM_META {
         'view' => \Illuminate\View\Factory::class,
         'view.finder' => \Illuminate\View\FileViewFinder::class,
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
+        'Shenaar\DBProfiler\QueryFormatter' => \Shenaar\DBProfiler\QueryFormatter::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'App\Services\Auth\Contracts\Registrar' => \App\Services\Auth\UserRegistrar::class,
         'Illuminate\Console\Scheduling\Schedule' => \Illuminate\Console\Scheduling\Schedule::class,
