@@ -13,4 +13,5 @@ use App\Http\Controllers\Web\IndexContoller;
 |
 */
 
-Route::any('{all}', IndexContoller::action('index'))->where('all', '.*');
+Route::any('{all}', IndexContoller::action('index'))
+    ->where('all', '.*');

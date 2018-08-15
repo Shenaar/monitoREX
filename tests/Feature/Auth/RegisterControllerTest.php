@@ -17,44 +17,6 @@ class RegisterControllerTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @covers RegisterController::checkLogin()
-     *
-     * @dataProvider loginProvider
-     *
-     * @param string $login
-     * @param string $type
-     */
-    public function testCheckLoginNotExists(string $login, string $type)
-    {
-        $this
-            ->getJson(route('api.register.check_login', ['login' => $login]))
-            ->assertJsonFragment([
-                'exists' => false,
-            ]);
-    }
-
-    /**
-     * @covers RegisterController::checkLogin()
-     *
-     * @dataProvider loginProvider
-     *
-     * @param string $login
-     * @param string $type
-     */
-    public function testCheckLoginExists(string $login, string $type)
-    {
-        $user = factory(User::class)->create([
-            $type => $login
-        ]);
-
-        $this
-            ->getJson(route('api.register.check_login', ['login' => $login]))
-            ->assertJsonFragment([
-                'exists' => true,
-            ]);
-    }
-
-    /**
      * @covers RegisterController::register()
      *
      * @dataProvider loginProvider
@@ -66,7 +28,7 @@ class RegisterControllerTest extends TestCase
     {
 
         $response = $this
-            ->postJson(route('api.register.register', [
+            ->postJson(route('webapi.auth.register', [
                 'login'    => $login,
                 'password' => 'secret',
             ]))
@@ -99,7 +61,7 @@ class RegisterControllerTest extends TestCase
         ]);
 
         $this
-            ->postJson(route('api.register.register', [
+            ->postJson(route('webapi.auth.register', [
                 'login' => $login,
                 'password' => 'secret',
                 'rules' => true,

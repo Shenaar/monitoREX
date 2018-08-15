@@ -29,7 +29,7 @@ class LoginControllerTest extends TestCase
         $this->actingAs($user);
 
         $response = $this
-            ->get(route('api.auth.current'))
+            ->get(route('webapi.auth.current'))
             ->assertJson([
                 'email'    => 'dummy@example.com',
             ])
@@ -52,7 +52,7 @@ class LoginControllerTest extends TestCase
         ]);
 
         $this
-            ->post(route('api.login.login'), [
+            ->post(route('webapi.auth.login'), [
                 'login'    => 'notDummy@example.com',
                 'password' => 'secret',
             ])
@@ -73,7 +73,7 @@ class LoginControllerTest extends TestCase
         ]);
 
         $this
-            ->post(route('api.login.login'), [
+            ->post(route('webapi.auth.login'), [
                 'login'    => 'dummy@example.com',
                 'password' => 'secret1',
             ])
@@ -94,7 +94,7 @@ class LoginControllerTest extends TestCase
         ]);
 
         $this
-            ->post(route('api.login.login'), [
+            ->post(route('webapi.auth.login'), [
                 'login'    => 'dummy@example.com',
                 'password' => 'secret',
             ])
@@ -112,14 +112,14 @@ class LoginControllerTest extends TestCase
         ]);
 
         $this
-            ->post(route('api.login.login'), [
+            ->post(route('webapi.auth.login'), [
                 'login'    => 'dummy@example.com',
                 'password' => 'secret',
             ])
             ->assertStatus(Response::HTTP_OK);
 
         $this
-            ->get(route('api.login.logout'))
+            ->get(route('webapi.auth.logout'))
             ->assertStatus(Response::HTTP_OK);
     }
 }

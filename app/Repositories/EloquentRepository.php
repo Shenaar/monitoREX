@@ -35,7 +35,7 @@ abstract class EloquentRepository
     {
         $id = (int) $id;
 
-        return  $this->model->find($id);
+        return $this->model->find($id);
     }
 
     /**

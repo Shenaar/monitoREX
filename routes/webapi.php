@@ -3,18 +3,38 @@
 use App\Http\Controllers\WebApi\Auth\LoginController;
 use App\Http\Controllers\WebApi\Auth\RegisterController;
 use App\Http\Controllers\WebApi\ProjectController;
+use App\Models\Project;
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Routing\Router;
 
-Route::get('/register/check_login', RegisterController::action('checkLogin'))->name('api.register.check_login');
-Route::post('/register', RegisterController::action('register'))->name('api.register.register');
 
-Route::post('/login', LoginController::action('login'))->name('api.login.login');
-Route::get('/logout', LoginController::action('logout'))->name('api.login.logout');
+Route::prefix('/auth')->name('auth.')->group(function (Router $router) {
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/auth/current', LoginController::action('current'))->name('api.auth.current');
+    $router->post('/register', RegisterController::action('register'))
+        ->name('register');
 
-    Route::post('/projects', ProjectController::action('create'))->name('api.project.create');
-    Route::put('/projects/{project}', ProjectController::action('update'))->name('api.project.update');
+    $router->post('/login', LoginController::action('login'))
+        ->name('login');
+
+    $router->get('/logout', LoginController::action('logout'))
+        ->name('logout');
+
+    $router->get('/current', LoginController::action('current'))
+        ->name('current')
+        ->middleware(['auth']);
+});
+
+
+Route::middleware(['auth'])->prefix('/projects')->name('project.')->group(function (Router $router) {
+
+    $router->post('/', ProjectController::action('create'))
+        ->name('create')
+        ->can('create', Project::class);
+    ;
+
+    $router->put('/{project}', ProjectController::action('update'))
+        ->name('update')
+        ->can('update', 'project')
+    ;
 });

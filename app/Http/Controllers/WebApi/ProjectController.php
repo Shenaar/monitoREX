@@ -32,8 +32,6 @@ class ProjectController extends Controller
      */
     public function create(CreateProjectRequest $request, ProjectService $service)
     {
-        $this->authorize('create', Project::class);
-
         return $service->create($this->user, $request->validated());
     }
 
@@ -46,8 +44,6 @@ class ProjectController extends Controller
      */
     public function update(Project $project, UpdateProjectRequest $request, ProjectService $service)
     {
-        $this->authorize('update', $project);
-
         return $service->update($project, $request->validated());
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Http\Middleware\Api;
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -24,7 +25,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        \Illuminate\Routing\Route::macro('can', function (string $action, string $parameter) {
+            return $this->middleware('can:' . $action . ',' . $parameter);
+        });
 
         parent::boot();
     }
@@ -55,6 +58,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('web')
             ->namespace($this->namespace . '\\WebApi')
             ->prefix('/webapi')
+            ->name('webapi.')
             ->group(base_path('routes/webapi.php'));
 
         Route::middleware('web')
@@ -74,6 +78,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::prefix('api')
             ->middleware('api')
             ->middleware(Api::class)
+            ->name('api.')
             ->namespace($this->namespace . '\\Api')
             ->group(base_path('routes/api.php'));
     }

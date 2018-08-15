@@ -24,7 +24,7 @@ class ProjectControllerTest extends TestCase
     public function testGuestCreate()
     {
         $this
-            ->postJson(route('api.project.create'), [
+            ->postJson(route('webapi.project.create'), [
                 'title'  => 'The coolest project ever',
                 'domain' => 'example.com',
             ])
@@ -42,7 +42,7 @@ class ProjectControllerTest extends TestCase
         $this->actingAs($user);
 
         $response = $this
-            ->postJson(route('api.project.create'), [
+            ->postJson(route('webapi.project.create'), [
                 'title'  => 'The coolest project ever',
                 'domain' => 'example.com',
             ])
@@ -69,7 +69,7 @@ class ProjectControllerTest extends TestCase
         $this->actingAs($user);
 
         $this
-            ->postJson(route('api.project.create'), [
+            ->postJson(route('webapi.project.create'), [
                 $key => $data,
             ])
             ->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY)
@@ -89,7 +89,7 @@ class ProjectControllerTest extends TestCase
         ]);
 
         $this
-            ->putJson(route('api.project.update', $project), [
+            ->putJson(route('webapi.project.update', $project), [
                 'title'  => 'The coolest project ever',
                 'domain' => 'example.com',
             ])
@@ -112,7 +112,7 @@ class ProjectControllerTest extends TestCase
         ]);
 
         $response = $this
-            ->putJson(route('api.project.update', $project), [
+            ->putJson(route('webapi.project.update', $project), [
                 'title'  => 'The coolest project ever2',
                 'domain' => 'example2.com',
                 'api_key' => '42',
@@ -142,7 +142,7 @@ class ProjectControllerTest extends TestCase
         ]);
 
         $this
-            ->putJson(route('api.project.update', -1), [
+            ->putJson(route('webapi.project.update', -1), [
                 'title'  => 'The coolest project ever2',
                 'domain' => 'example2.com',
                 'api_key' => '42',
@@ -166,7 +166,7 @@ class ProjectControllerTest extends TestCase
         ]);
 
         $this
-            ->putJson(route('api.project.update', $project), [
+            ->putJson(route('webapi.project.update', $project), [
                 $key => $data
             ])
             ->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY)
@@ -189,7 +189,7 @@ class ProjectControllerTest extends TestCase
         $this->actingAs($actingUser);
 
         $this
-            ->putJson(route('api.project.update', $project), [
+            ->putJson(route('webapi.project.update', $project), [
                 'title'  => 'The coolest project ever2',
                 'domain' => 'example2.com',
                 'api_key' => '42',
