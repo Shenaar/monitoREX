@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 class Project extends AbstractModel
 {
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo|User
+     * @return BelongsTo|User
      */
     public function user()
     {
@@ -13,7 +16,7 @@ class Project extends AbstractModel
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany|Report[]
+     * @return HasMany|Report[]
      */
     public function reports()
     {

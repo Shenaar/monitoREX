@@ -31,11 +31,6 @@ class CreateReportsTable extends Migration
                 ->default(ReportStatuses::NEW_ONE)
                 ->index();
 
-            $table->integer('group_id')
-                ->unsigned()
-                ->nullable()
-                ->default(null);
-
             $table->timestamps();
         });
     }

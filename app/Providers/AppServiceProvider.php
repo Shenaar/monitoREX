@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Services\Reporter\Reporter;
+use App\Services\Reporter\SimpleReporter;
+
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +26,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(Reporter::class, SimpleReporter::class);
     }
 }

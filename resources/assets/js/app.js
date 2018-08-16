@@ -6,6 +6,7 @@
  */
 
 require('./bootstrap');
+require('vue-router');
 
 window.Vue = require('vue');
 
@@ -17,6 +18,9 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
-const app = new Vue({
-    el: '#app'
-});
+window.onload = function () {
+
+    const app = new Vue({
+        el: '#app'
+    });
+};
