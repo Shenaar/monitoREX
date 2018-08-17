@@ -22,7 +22,8 @@
 </head>
 <body>
 <div id="app">
-    <router-view/>
+    <navbar></navbar>
+    <router-view class="pt-5"/>
 </div>
 </body>
 </html>

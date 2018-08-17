@@ -4,26 +4,20 @@
 
     export default {
         data: function () {
-            let user = Auth.user();
-
-            if (!user) {
-                return {
-                    links: [{
-                        to: '/login',
-                        name: 'Login'
-                    }, {
-                        to: '/register',
-                        name: 'Register'
-                    }]
-                };
+            return {};
+        },
+        computed: {
+            getUser: () => {
+                console.log('getUser', Auth.user());
+                return Auth.user();
             }
-
-            return {
-                links: [{
-                    to: '/example',
-                    name: 'Example'
-                }]
-            };
+        },
+        methods: {
+            logout() {
+                Auth.logout().then(() => {
+                    router.push('/login');
+                });
+            },
         }
     }
 </script>
@@ -43,10 +37,16 @@
                 </ul>
 
                 <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto" v-if="!getUser">
                     <!-- Authentication Links -->
-                    <li class="nav-item" v-for="link of links">
-                        <router-link class="nav-link" :to="link.to">{{ link.name }}</router-link>
+                    <li class="nav-item">
+                        <router-link class="nav-link" to="/login">Login</router-link>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto" v-else>
+                    <!-- Authentication Links -->
+                    <li class="nav-item">
+                        <a href="#" @click.prevent="logout">Logout</a>
                     </li>
                 </ul>
             </div>

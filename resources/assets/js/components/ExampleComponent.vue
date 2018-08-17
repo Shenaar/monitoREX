@@ -1,8 +1,11 @@
 <script>
+
+    import Auth from '../services/Auth';
+
     export default {
         data () {
             return {
-                answer: 42
+                user: Auth.user()
             };
         }
     }
@@ -16,7 +19,7 @@
                     <div class="card-header">Example Component</div>
 
                     <div class="card-body">
-                        {{ answer }}
+                        {{ user.name }}
                     </div>
                 </div>
             </div>

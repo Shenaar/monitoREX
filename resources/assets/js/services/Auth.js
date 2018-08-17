@@ -19,7 +19,28 @@ const Auth = {
         let result = Api.get('/auth/current');
 
         result.then((response) => {
+            console.log('Auth');
             Auth.cachedUser = response.data ? response.data : null;
+        });
+
+        return result;
+    },
+
+    login: (login, password) => {
+        let result = Api.post('/auth/login', {login: login, password: password});
+
+        result.then((response) => {
+            Auth.cachedUser = response.data ? response.data : null;
+        });
+
+        return result;
+    },
+
+    logout: () => {
+        let result = Api.get('/auth/logout');
+
+        result.then(() => {
+            Auth.cachedUser = null;
         });
 
         return result;
