@@ -21,8 +21,7 @@ Route::prefix('/auth')->name('auth.')->group(function (Router $router) {
         ->name('logout');
 
     $router->get('/current', LoginController::action('current'))
-        ->name('current')
-        ->middleware(['auth']);
+        ->name('current');
 });
 
 

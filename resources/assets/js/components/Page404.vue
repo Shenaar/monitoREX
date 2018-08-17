@@ -1,0 +1,3 @@
+<template>
+    <div class="alert alert-danger">Not found</div>
+</template>

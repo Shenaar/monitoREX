@@ -2,7 +2,8 @@
     export default {
         data () {
             return {
-                answer: 42
+                login: '',
+                password: ''
             };
         }
     }
@@ -13,14 +14,13 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card card-default">
-                    <div class="card-header">Example Component</div>
+                    <div class="card-header">Login Component</div>
 
                     <div class="card-body">
-                        {{ answer }}
+                        <input name="email" v-model="login"/>
                     </div>
                 </div>
             </div>
         </div>
-        <router-view></router-view>
     </div>
 </template>

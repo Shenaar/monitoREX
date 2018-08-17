@@ -20,6 +20,12 @@ class UsersSeeder extends Seeder
 
         DB::beginTransaction();
 
+        factory(User::class)->create([
+            'email' => 'pavel.polshkov@gmail.com',
+            'name'  => 'Pavel Polshkov',
+            'password' => \Hash::make('123456'),
+        ]);
+
         factory(User::class, 100)->create()->each(function (User $user) {
 
             factory(Project::class, mt_rand(0, 4))->make()->each(function (Project $project) use ($user) {

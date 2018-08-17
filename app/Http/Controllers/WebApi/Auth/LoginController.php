@@ -71,7 +71,7 @@ class LoginController extends Controller
     {
         /** @var User $user */
         $user = Auth::user();
-
+//$user = User::first();
         return $user;
     }
 }

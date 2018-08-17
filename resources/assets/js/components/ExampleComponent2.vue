@@ -2,18 +2,18 @@
     export default {
         data () {
             return {
-                answer: 42
+                answer: 322
             };
         }
     }
 </script>
 
 <template>
-    <div class="container">
+
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card card-default">
-                    <div class="card-header">Example Component</div>
+                    <div class="card-header">Example Component 2</div>
 
                     <div class="card-body">
                         {{ answer }}
@@ -21,6 +21,5 @@
                 </div>
             </div>
         </div>
-        <router-view></router-view>
-    </div>
+
 </template>
