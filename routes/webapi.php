@@ -3,6 +3,7 @@
 use App\Http\Controllers\WebApi\Auth\LoginController;
 use App\Http\Controllers\WebApi\Auth\RegisterController;
 use App\Http\Controllers\WebApi\ProjectController;
+use App\Http\Controllers\WebApi\ReportController;
 use App\Models\Project;
 
 use Illuminate\Support\Facades\Route;
@@ -40,4 +41,11 @@ Route::middleware(['auth'])->prefix('/projects')->name('project.')->group(functi
     $router->get('/owned', ProjectController::action('owned'))
         ->name('owned')
     ;
+
+    Route::prefix('/{project}/reports')->name('report.')->group(function (Router $router) {
+        $router->get('/', ReportController::action('getList'))
+            ->name('list')
+            ->can('listReports', 'project');
+        ;
+    });
 });

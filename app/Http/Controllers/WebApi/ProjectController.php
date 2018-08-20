@@ -6,24 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\WebApi\CreateProjectRequest;
 use App\Http\Requests\WebApi\UpdateProjectRequest;
 use App\Models\Project;
-use App\Models\User;
 use App\Services\ProjectService;
 
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
-    /** @var User */
-    private $user;
-
-    /**
-     * ProjectController constructor.
-     */
-    public function __construct()
-    {
-        $this->user = Auth::user();
-    }
-
     /**
      * @param CreateProjectRequest $request
      * @param ProjectService $service
@@ -32,7 +20,7 @@ class ProjectController extends Controller
      */
     public function create(CreateProjectRequest $request, ProjectService $service)
     {
-        return $service->create($this->user, $request->validated());
+        return $service->create($request->user(), $request->validated());
     }
 
     /**
@@ -50,8 +38,8 @@ class ProjectController extends Controller
     /**
      * @return Project[]
      */
-    public function owned()
+    public function owned(Request $request)
     {
-        return $this->user->ownedProjects;
+        return $request->user()->ownedProjects;
     }
 }

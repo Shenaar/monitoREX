@@ -33,4 +33,15 @@ class ProjectPolicy
     {
         return $project->user_id === $user->id;
     }
+
+    /**
+     * @param User $user
+     * @param Project $project
+     *
+     * @return bool
+     */
+    public function listReports(User $user, Project $project)
+    {
+        return $project->user->id === $user->id;
+    }
 }

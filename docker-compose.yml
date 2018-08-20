@@ -11,6 +11,7 @@ services:
     environment:
       - "DB_PORT=3306"
       - "DB_HOST=database"
+      - "REDIS_HOST=redis"
   web:
     build:
       context: ./
@@ -31,7 +32,27 @@ services:
       - "MYSQL_PASSWORD=secret"
       - "MYSQL_ROOT_PASSWORD=secret"
     ports:
-        - "33061:3306"
+        - 33061:3306
+
+  redis:
+    image: redis
+    volumes:
+      - redisData:/data
+    ports:
+        - 6379:6379
+
+  laravel-echo-server:
+    image: node
+    volumes_from:
+      - app
+    working_dir: /var/www
+    ports:
+        - 6001:6001
+    environment:
+      - DEBUG=*
+    command: nodejs node_modules/laravel-echo-server/bin/server.js start
+
 
 volumes:
   dbdata:
+  redisData:

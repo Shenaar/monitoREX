@@ -9,12 +9,19 @@ import './bootstrap';
 import Auth from './services/Auth';
 import Navbar from './components/Navbar.vue';
 import Vue from 'vue';
+import Moment from 'moment';
 
 window.Vue = Vue;
 
 import router from './router';
 
 window.router = router;
+
+Vue.filter('formatDate', (value) => {
+    if (value) {
+        return Moment(String(value)).format('hh:mm DD.MM.YYYY');
+    }
+});
 
 window.onload = function () {
 
