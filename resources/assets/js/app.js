@@ -6,6 +6,7 @@
  */
 
 import './bootstrap';
+import Auth from './services/Auth';
 import Navbar from './components/Navbar.vue';
 import Vue from 'vue';
 
@@ -22,6 +23,11 @@ window.onload = function () {
         router,
         components: {
             Navbar
+        },
+        data: () => {
+            return {
+                Auth
+            };
         }
     });
 };

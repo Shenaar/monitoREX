@@ -1,11 +1,12 @@
+import Auth from './services/Auth';
 import VueRouter from 'vue-router';
 import Vue from 'vue';
 
 Vue.use(VueRouter);
 
-const ExampleComponent = require('./components/ExampleComponent.vue');
-const LoginComponent = require('./components/LoginComponent.vue');
-const Page404 = require('./components/Page404.vue');
+import ExampleComponent from './components/ExampleComponent.vue';
+import Login from './components/Login.vue';
+import Page404 from './components/Page404.vue';
 
 const router = new VueRouter({
     mode: 'history',
@@ -14,7 +15,7 @@ const router = new VueRouter({
         component: ExampleComponent,
     }, {
         path: '/login',
-        component: LoginComponent,
+        component: Login,
         meta: {
             guest: true
         },
@@ -36,8 +37,6 @@ router.beforeEach((to, from, next) => {
 });
 
 router.beforeEach((to, from, next) => {
-    const Auth = require('./services/Auth').default;
-
     Auth.check().then((response) => {
 
         if (!response.data && !to.matched.some(record => record.meta.guest)) {

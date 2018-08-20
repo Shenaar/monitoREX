@@ -46,4 +46,12 @@ class ProjectController extends Controller
     {
         return $service->update($project, $request->validated());
     }
+
+    /**
+     * @return Project[]
+     */
+    public function owned()
+    {
+        return $this->user->ownedProjects;
+    }
 }

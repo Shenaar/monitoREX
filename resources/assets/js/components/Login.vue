@@ -6,15 +6,17 @@
         data () {
             return {
                 login: '',
-                password: ''
+                password: '',
+                errors: []
             };
         },
         methods: {
             submit(event) {
+                this.errors = [];
                 Auth.login(this.login, this.password).then(() => {
                     router.push('/');
                 }).catch((error) => {
-                    alert(error);
+                    this.errors.push(error.response.data.message);
                 });
             }
         },
@@ -44,6 +46,12 @@
                                 <div class="col-md-6">
                                     <input id="password" type="password" class="form-control" name="password" required v-model="password">
                                 </div>
+                            </div>
+
+                            <div class="alert alert-danger" v-if="errors.length">
+                                <p class="mb-0" v-for="error in errors">
+                                    {{ error }}
+                                </p>
                             </div>
 
                             <div class="form-group row mb-0">

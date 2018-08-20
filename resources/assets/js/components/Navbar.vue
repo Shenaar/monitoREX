@@ -4,13 +4,12 @@
 
     export default {
         data: function () {
-            return {};
+            return {
+                Auth
+            };
         },
         computed: {
-            getUser: () => {
-                console.log('getUser', Auth.user());
-                return Auth.user();
-            }
+
         },
         methods: {
             logout() {
@@ -37,16 +36,27 @@
                 </ul>
 
                 <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto" v-if="!getUser">
+                <ul class="navbar-nav ml-auto" v-if="!Auth.user()">
                     <!-- Authentication Links -->
                     <li class="nav-item">
                         <router-link class="nav-link" to="/login">Login</router-link>
                     </li>
+                    <li class="nav-item">
+                        <router-link class="nav-link" to="/join">Join</router-link>
+                    </li>
                 </ul>
                 <ul class="navbar-nav ml-auto" v-else>
                     <!-- Authentication Links -->
-                    <li class="nav-item">
-                        <a href="#" @click.prevent="logout">Logout</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ Auth.user().name }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a href="#" class="nav-link" @click.prevent="logout">
+                                <i class="fa fa-sign-out"></i>
+                                Logout
+                            </a>
+                        </div>
                     </li>
                 </ul>
             </div>

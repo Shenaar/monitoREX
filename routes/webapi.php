@@ -36,4 +36,8 @@ Route::middleware(['auth'])->prefix('/projects')->name('project.')->group(functi
         ->name('update')
         ->can('update', 'project')
     ;
+
+    $router->get('/owned', ProjectController::action('owned'))
+        ->name('owned')
+    ;
 });

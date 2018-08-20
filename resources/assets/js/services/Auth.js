@@ -19,7 +19,6 @@ const Auth = {
         let result = Api.get('/auth/current');
 
         result.then((response) => {
-            console.log('Auth');
             Auth.cachedUser = response.data ? response.data : null;
         });
 

@@ -200,6 +200,38 @@ class ProjectControllerTest extends TestCase
     }
 
     /**
+     *
+     */
+    public function testGetOwned()
+    {
+        $user = factory(User::class)->create();
+
+        $this->actingAs($user);
+
+        /** @var Project $project */
+        factory(Project::class, 10)->create([
+            'user_id' => $user->id,
+        ]);
+
+        $this
+            ->getJson(route('webapi.project.owned'))
+            ->assertStatus(Response::HTTP_OK)
+            ->assertJsonCount(10)
+        ;
+    }
+
+    /**
+     *
+     */
+    public function testGetOwnedGuest()
+    {
+        $this
+            ->getJson(route('webapi.project.owned'))
+            ->assertStatus(Response::HTTP_UNAUTHORIZED)
+        ;
+    }
+
+    /**
      * @return array
      */
     public function invalidData()
