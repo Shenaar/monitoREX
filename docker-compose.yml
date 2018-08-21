@@ -42,7 +42,9 @@ services:
         - 6379:6379
 
   laravel-echo-server:
-    image: node
+    build:
+      context: ./
+      dockerfile: ./docker/laravel-echo-server.dockerfile
     volumes_from:
       - app
     working_dir: /var/www
@@ -50,7 +52,7 @@ services:
         - 6001:6001
     environment:
       - DEBUG=*
-    command: nodejs node_modules/laravel-echo-server/bin/server.js start
+    command: laravel-echo-server start
 
 
 volumes:
