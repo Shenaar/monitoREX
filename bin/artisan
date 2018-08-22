@@ -1,6 +1,7 @@
 #!/bin/bash
 
-docker exec -it \
+docker run -it -w="/app" \
     --user $(id -u):$(id -g) \
-    monitorex-app \
+    --volume $(pwd):/app \
+    monitorex_php \
     php artisan "$@"
