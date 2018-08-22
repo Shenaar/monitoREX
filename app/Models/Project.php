@@ -8,6 +8,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Project extends AbstractModel
 {
     /**
+     * @var array
+     */
+    protected $hidden = [
+        'api_key',
+    ];
+
+    /**
      * @return BelongsTo|User
      */
     public function user()

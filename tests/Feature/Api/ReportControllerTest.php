@@ -28,7 +28,8 @@ class ReportControllerTest extends TestCase
             'file' => '/home/vagrant/monitorex/vendor/laravel/framework/src/Illuminate/Routing/Router.php',
             'line' => 963,
             'message' => 'No query results for model [App\Models\Project].',
-            'trace' => 'trace'
+            'trace' => 'trace',
+            'url' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
         ];
 
         $this
@@ -49,7 +50,8 @@ class ReportControllerTest extends TestCase
             'file' => '/home/vagrant/monitorex/vendor/laravel/framework/src/Illuminate/Routing/Router.php',
             'line' => 963,
             'message' => 'No query results for model [App\Models\Project].',
-            'trace' => 'trace'
+            'trace' => 'trace',
+            'url' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
         ];
 
         $this
@@ -69,7 +71,8 @@ class ReportControllerTest extends TestCase
             'file' => '/home/vagrant/monitorex/vendor/laravel/framework/src/Illuminate/Routing/Router.php',
             'line' => 963,
             'message' => 'No query results for model [App\Models\Project].',
-            'trace' => 'trace'
+            'trace' => 'trace',
+            'url' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
         ];
 
         $this

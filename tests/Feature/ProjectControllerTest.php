@@ -111,7 +111,7 @@ class ProjectControllerTest extends TestCase
             'user_id' => $user->id,
         ]);
 
-        $response = $this
+        $this
             ->putJson(route('webapi.project.update', $project), [
                 'title'  => 'The coolest project ever2',
                 'domain' => 'example2.com',
@@ -123,9 +123,11 @@ class ProjectControllerTest extends TestCase
                 'title'   => 'The coolest project ever2',
                 'domain'  => 'example2.com',
                 'user_id' => $user->id,
-                'api_key' => $project->api_key,
             ])
         ;
+
+        $updatedProject = Project::getQuery()->find($project->id);
+        $this->assertEquals($updatedProject->api_key, $project->api_key);
     }
 
     /**
@@ -214,7 +216,7 @@ class ProjectControllerTest extends TestCase
         ]);
 
         $this
-            ->getJson(route('webapi.project.owned'))
+            ->getJson(route('webapi.project.available'))
             ->assertStatus(Response::HTTP_OK)
             ->assertJsonCount(10)
         ;
@@ -226,7 +228,7 @@ class ProjectControllerTest extends TestCase
     public function testGetOwnedGuest()
     {
         $this
-            ->getJson(route('webapi.project.owned'))
+            ->getJson(route('webapi.project.available'))
             ->assertStatus(Response::HTTP_UNAUTHORIZED)
         ;
     }

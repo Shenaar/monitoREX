@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\WebApi\CreateProjectRequest;
 use App\Http\Requests\WebApi\UpdateProjectRequest;
 use App\Models\Project;
+use App\Repositories\ProjectRepository;
 use App\Services\ProjectService;
 
 use Illuminate\Http\Request;
@@ -20,7 +21,9 @@ class ProjectController extends Controller
      */
     public function create(CreateProjectRequest $request, ProjectService $service)
     {
-        return $service->create($request->user(), $request->validated());
+        return $service
+            ->create($request->user(), $request->validated())
+            ->makeVisible('api_key');
     }
 
     /**
@@ -32,14 +35,16 @@ class ProjectController extends Controller
      */
     public function update(Project $project, UpdateProjectRequest $request, ProjectService $service)
     {
-        return $service->update($project, $request->validated());
+        return $service
+            ->update($project, $request->validated());
     }
 
     /**
      * @return Project[]
      */
-    public function owned(Request $request)
+    public function available(Request $request, ProjectRepository $repository)
     {
-        return $request->user()->ownedProjects;
+        return $repository
+            ->getAvailable($request->user());
     }
 }

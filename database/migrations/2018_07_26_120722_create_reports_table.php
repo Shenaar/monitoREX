@@ -20,6 +20,8 @@ class CreateReportsTable extends Migration
 
             $table->integer('project_id')->unsigned()->index();
 
+            $table->string('url');
+
             $table->string('class');
             $table->string('file');
             $table->integer('line')->unsigned();

@@ -17,6 +17,7 @@ class CreateReportRequest extends ApiRequest
             'line'  => 'required|integer',
             'message' => 'required',
             'trace' => 'nullable',
+            'url'   => 'required',
         ];
     }
 }

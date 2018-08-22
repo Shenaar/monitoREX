@@ -33,13 +33,18 @@ Route::middleware(['auth'])->prefix('/projects')->name('project.')->group(functi
         ->can('create', Project::class);
     ;
 
-    $router->put('/{project}', ProjectController::action('update'))
-        ->name('update')
+    $router->get('/available', ProjectController::action('available'))
+        ->name('available')
+    ;
+
+    $router->get('/key', ProjectController::action('key'))
+        ->name('key')
         ->can('update', 'project')
     ;
 
-    $router->get('/owned', ProjectController::action('owned'))
-        ->name('owned')
+    $router->put('/{project}', ProjectController::action('update'))
+        ->name('update')
+        ->can('update', 'project')
     ;
 
     Route::prefix('/{project}/reports')->name('report.')->group(function (Router $router) {

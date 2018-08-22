@@ -19,6 +19,7 @@ $factory->define(Report::class, function (Faker $faker) use ($exceptions) {
         'line' => 963,
         'message' => $faker->sentence,
         'trace' => 'trace',
+        'url' => $faker->url,
         'created_at' => $faker->dateTimeBetween('-1 week'),
     ];
 });

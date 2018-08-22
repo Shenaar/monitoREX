@@ -35,6 +35,7 @@ class SimpleReporter implements Reporter
         $report->file = $data['file'];
         $report->line = $data['line'];
         $report->message = $data['message'];
+        $report->url = $data['url'];
 
         $report->trace = array_get($data, 'trace', null);
         $report->project()->associate($project);

@@ -12,6 +12,7 @@ services:
       - "DB_PORT=3306"
       - "DB_HOST=database"
       - "REDIS_HOST=redis"
+
   web:
     build:
       context: ./
@@ -32,28 +33,42 @@ services:
       - "MYSQL_PASSWORD=secret"
       - "MYSQL_ROOT_PASSWORD=secret"
     ports:
-        - 33061:3306
+      - 3306:3306
 
   redis:
     image: redis
     volumes:
       - redisData:/data
     ports:
-        - 6379:6379
+      - 6379:6379
 
   laravel-echo-server:
     build:
+      context: ./docker
+      dockerfile: ./laravel-echo-server.dockerfile
+    ports:
+      - 6001:6001
+    environment:
+      - DEBUG=*
+
+  php:
+    build:
       context: ./
-      dockerfile: ./docker/laravel-echo-server.dockerfile
+      dockerfile: ./docker/php.dockerfile
+
+  laravel-queue-listener:
+    image: monitorex_php
     volumes_from:
       - app
     working_dir: /var/www
-    ports:
-        - 6001:6001
-    environment:
-      - DEBUG=*
-    command: laravel-echo-server start
+    command: php artisan queue:listen -vvv
 
+  npm-build:
+    image: node
+    volumes_from:
+      - app
+    working_dir: /var/www
+    command: npm run watch
 
 volumes:
   dbdata:

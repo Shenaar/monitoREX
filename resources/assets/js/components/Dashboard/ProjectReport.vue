@@ -42,6 +42,7 @@
                     {{ report.created_at | formatDate }}: {{ report.message }}
                 </p>
                 <p class="text-danger mb-0">{{ report.class }}</p>
+                <a v-bind:href="report.url" class="text-info mb-0 text-small" target="_blank">{{ report.url }}</a>
             </li>
         </ul>
     </div>
