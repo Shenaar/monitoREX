@@ -3,5 +3,6 @@
 docker run -it -w="/app" \
     --user $(id -u):$(id -g) \
     --volume $(pwd):/app \
+    --network monitorex_default \
     monitorex_php \
     vendor/bin/phpunit "$@"

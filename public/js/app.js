@@ -78212,7 +78212,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         Echo.private('Project.' + this.project.id).listen('ReportCreated', function (e) {
             e.report.unseen = true;
             _this.reports.unshift(e.report);
-            console.log('sadasdas');
         });
     },
     beforeDestroy: function beforeDestroy() {
@@ -78249,7 +78248,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "card card-default" }, [
     _c("div", { staticClass: "card-header" }, [
-      _vm._v("\n        -- " + _vm._s(_vm.project.title) + " --\n        "),
+      _vm._v("\n        " + _vm._s(_vm.project.title) + "\n        "),
       _vm.loading
         ? _c("i", {
             staticClass: "fa fa-refresh fa-spin fa-pull-right project-loading"

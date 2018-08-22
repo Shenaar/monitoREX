@@ -1,7 +1,8 @@
 #!/bin/bash
 
-docker run -it -w="/app" \
+docker run -i -t --init -w="/app" \
     --user $(id -u):$(id -g) \
     --volume $(pwd):/app \
+    --network monitorex_default \
     monitorex_php \
     php "$@"
