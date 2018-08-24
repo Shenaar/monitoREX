@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
@@ -27,10 +28,7 @@ class Handler extends ExceptionHandler
     ];
 
     /**
-     * Report or log an exception.
-     *
-     * @param  \Exception  $exception
-     * @return void
+     * @inheritdoc
      */
     public function report(Exception $exception)
     {
@@ -38,14 +36,19 @@ class Handler extends ExceptionHandler
     }
 
     /**
-     * Render an exception into an HTTP response.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $exception
-     * @return \Illuminate\Http\Response
+     * @inheritdoc
      */
     public function render($request, Exception $exception)
     {
+        // Make the message more understandable
+        if ($exception instanceof ModelNotFoundException) {
+            $model = array_last(explode('\\', $exception->getModel()));
+
+            $message = sprintf('%s not found', $model);
+
+            $exception = new ModelNotFoundException($message, $exception->getCode(), $exception);
+        }
+
         return parent::render($request, $exception);
     }
 }

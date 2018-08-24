@@ -1,40 +1,39 @@
 <script>
 
-    import ProjectReport from './Dashboard/ProjectReport.vue';
-    import Project from '../services/Project';
+    import Config from '../services/Config';
 
     export default {
         data: () => {
             return {
                 loading: false,
-                projects: []
+                config: null
             }
         },
         methods: {
-            getProjects() {
+            getConfig() {
                 this.loading = true;
 
-                Project.my().then((response) => {
-                    this.projects = response.data;
+                Config.get().then((response) => {
+                    this.config = response.data;
                     this.loading = false;
                 });
             }
         },
         created() {
-            this.getProjects();
+            this.getConfig();
         },
         components: {
-            ProjectReport
         }
     };
 </script>
 <template>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-6 pb-4" v-for="project in projects">
-                <project-report v-bind:project="project"></project-report>
+            <div class="col-lg-12">
+                <div class="card card-default">
+                    <pre v-if="config" v-highlightjs><code class="javascript">{{ config }}</code></pre>
+                </div>
             </div>
-
         </div>
     </div>
 </template>

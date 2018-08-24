@@ -4,10 +4,11 @@ import Vue from 'vue';
 
 Vue.use(VueRouter);
 
-import ExampleComponent from './components/ExampleComponent.vue';
-import Login from './components/Login.vue';
-import Page404 from './components/Page404.vue';
+import Config from './components/Config.vue';
 import Dashboard from './components/Dashboard.vue';
+import Login from './components/Login.vue';
+import Report from './components/Report.vue';
+import Page404 from './components/Page404.vue';
 
 const router = new VueRouter({
     mode: 'history',
@@ -20,6 +21,13 @@ const router = new VueRouter({
         meta: {
             guest: true
         },
+    }, {
+        path: '/config',
+        component: Config,
+    }, {
+        path: '/projects/:projectId/reports/:reportId',
+        name: 'report.view',
+        component: Report,
     }, {
         path: '/404',
         component: Page404,

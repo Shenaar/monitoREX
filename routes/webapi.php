@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\FallbackController;
 use App\Http\Controllers\WebApi\Auth\LoginController;
 use App\Http\Controllers\WebApi\Auth\RegisterController;
+use App\Http\Controllers\WebApi\ConfigController;
 use App\Http\Controllers\WebApi\ProjectController;
 use App\Http\Controllers\WebApi\ReportController;
 use App\Models\Project;
@@ -52,5 +54,21 @@ Route::middleware(['auth'])->prefix('/projects')->name('project.')->group(functi
             ->name('list')
             ->can('listReports', 'project');
         ;
+
+        $router->get('/{report}', ReportController::action('view'))
+            ->name('view')
+            ->can('listReports', 'project');
+        ;
     });
 });
+
+if (app()->isLocal()) {
+    Route::middleware(['auth'])->prefix('/config')->name('config.')->group(function (Router $router) {
+        $router->get('/', ConfigController::action('view'))
+            ->name('view')
+        ;
+    });
+}
+
+Route::any('{all}', FallbackController::action('notFound'))
+    ->where('all', '.*');;

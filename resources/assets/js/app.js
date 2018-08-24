@@ -7,9 +7,10 @@
 
 import './bootstrap';
 import Auth from './services/Auth';
+import DateTime from './components/DateTime.vue';
 import Navbar from './components/Navbar.vue';
 import Vue from 'vue';
-import Moment from 'moment';
+import VueHighlightJS from 'vue-highlightjs';
 
 window.Vue = Vue;
 
@@ -17,11 +18,8 @@ import router from './router';
 
 window.router = router;
 
-Vue.filter('formatDate', (value) => {
-    if (value) {
-        return Moment(String(value)).format('hh:mm DD.MM.YYYY');
-    }
-});
+Vue.component('DateTime', DateTime);
+Vue.use(VueHighlightJS);
 
 window.onload = function () {
 
@@ -29,7 +27,7 @@ window.onload = function () {
         el: '#app',
         router,
         components: {
-            Navbar
+            Navbar,
         },
         data: () => {
             return {

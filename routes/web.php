@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Web\IndexContoller;
+use App\Http\Controllers\FallbackController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,5 +13,5 @@ use App\Http\Controllers\Web\IndexContoller;
 |
 */
 
-Route::any('{all}', IndexContoller::action('index'))
+Route::any('{all}', FallbackController::action('layout'))
     ->where('all', '.*');
