@@ -13,9 +13,9 @@
         methods: {
             submit(event) {
                 this.errors = [];
-                Auth.login(this.login, this.password).then(() => {
+                Auth.login(this.login, this.password).then( () => {
                     router.push('/');
-                }).catch((error) => {
+                }).catch( (error) => {
                     this.errors.push(error.response.data.message);
                 });
             }

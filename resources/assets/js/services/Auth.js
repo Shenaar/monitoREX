@@ -9,7 +9,7 @@ const Auth = {
 
     check: () => {
         if (Auth.cachedUser) {
-            return new Promise((resolve) => {
+            return new Promise( (resolve) => {
                 resolve({
                     data: Auth.cachedUser
                 });
@@ -18,8 +18,8 @@ const Auth = {
 
         let result = Api.get('/auth/current');
 
-        result.then((response) => {
-            Auth.cachedUser = response.data ? response.data : null;
+        result.then( ({ data }) => {
+            Auth.cachedUser = data ? data : null;
         });
 
         return result;
@@ -28,8 +28,8 @@ const Auth = {
     login: (login, password) => {
         let result = Api.post('/auth/login', {login: login, password: password});
 
-        result.then((response) => {
-            Auth.cachedUser = response.data ? response.data : null;
+        result.then( ({ data }) => {
+            Auth.cachedUser = data ? data : null;
         });
 
         return result;

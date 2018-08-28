@@ -11,22 +11,25 @@
                 errors: [],
             }
         },
+
         methods: {
             getReport() {
                 this.loading = true;
 
-                Report.get(this.$route.params.projectId, this.$route.params.reportId,).then((response) => {
-                    this.report = response.data.report;
-                    this.project = response.data.project;
+                Report.get(this.$route.params.projectId, this.$route.params.reportId,).then( ({data}) => {
+                    this.report  = data.report;
+                    this.project = this.report.project;
                     this.loading = false;
-                }).catch((error) => {
+                }).catch( (error) => {
                     this.errors.push(error.response.data.message);
                 });
             }
         },
+
         created() {
             this.getReport();
         },
+
         components: {
         }
     };

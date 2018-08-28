@@ -13,8 +13,8 @@
             getConfig() {
                 this.loading = true;
 
-                Config.get().then((response) => {
-                    this.config = response.data;
+                Config.get().then( ({ data }) => {
+                    this.config = data;
                     this.loading = false;
                 });
             }

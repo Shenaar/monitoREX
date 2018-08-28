@@ -38,8 +38,9 @@ class ReportController extends Controller
             throw new NotFoundHttpException('Report not found');
         }
 
+        $report->project = $project;
+
         return [
-            'project' => $project,
             'report'  => $report,
         ];
     }

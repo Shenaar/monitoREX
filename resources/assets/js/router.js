@@ -4,6 +4,7 @@ import Vue from 'vue';
 
 Vue.use(VueRouter);
 
+import App from './components/App.vue';
 import Config from './components/Config.vue';
 import Dashboard from './components/Dashboard.vue';
 import Login from './components/Login.vue';
@@ -14,20 +15,26 @@ const router = new VueRouter({
     mode: 'history',
     routes: [{
         path: '/',
-        component: Dashboard,
+        component: App,
+        children: [{
+                path: '/',
+                component: Dashboard,
+                name: 'dashboard'
+            }, {
+                path: '/config',
+                component: Config,
+            }, {
+                path: '/projects/:projectId/reports/:reportId',
+                name: 'report.view',
+                component: Report,
+            }]
     }, {
         path: '/login',
         component: Login,
+        name: 'login',
         meta: {
             guest: true
         },
-    }, {
-        path: '/config',
-        component: Config,
-    }, {
-        path: '/projects/:projectId/reports/:reportId',
-        name: 'report.view',
-        component: Report,
     }, {
         path: '/404',
         component: Page404,

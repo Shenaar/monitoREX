@@ -1,24 +1,31 @@
 <script>
     import Report from '../../services/Report';
+    import ElCard from "../../../../../node_modules/element-ui/packages/card/src/main.vue";
 
     export default {
+        components: {ElCard},
         data: () => {
             return {
                 loading: false,
                 reports: []
             };
         },
-        props: ['project'],
+        props: {
+            project: {
+                required: true,
+            },
+        },
         created() {
             this.loading = true;
-            Report.forProject(this.project, {perPage: 5}).then((response) => {
-                this.reports = response.data.data;
+            Report.forProject(this.project, {perPage: 5}).then( ({ data }) => {
+
+                this.reports = data.data;
                 this.loading = false;
             });
 
-            Echo.private('Project.' + this.project.id).listen('ReportCreated', (e) => {
-                e.report.unseen = true;
-                this.reports.unshift(e.report);
+            Echo.private('Project.' + this.project.id).listen('ReportCreated', ({ report }) => {
+                report.unseen = true;
+                this.reports.unshift(report);
             });
         },
         beforeDestroy() {
@@ -28,13 +35,12 @@
 </script>
 
 <template>
-    <div class="card card-default">
-        <div class="card-header">
+    <el-card>
+        <div slot="header">
             {{ project.title }}
             <i class="fa fa-refresh fa-spin fa-pull-right project-loading" v-if="loading"></i>
             <i class="fa fa-refresh fa-pull-right project-loading" v-else></i>
         </div>
-
         <ul class="list-group list-group-flush">
             <li class="list-group-item" v-bind:class="{ 'list-group-item-danger' : report.unseen }" v-for="report in reports">
                 <router-link :to="{ name: 'report.view', params: { projectId: project.id, reportId: report.id } }" class="font-weight-bold mb-0">
@@ -44,7 +50,8 @@
                 <a v-bind:href="report.url" class="text-info mb-0 text-small" target="_blank">{{ report.url }}</a>
             </li>
         </ul>
-    </div>
+
+    </el-card>
 </template>
 
 <style scoped>

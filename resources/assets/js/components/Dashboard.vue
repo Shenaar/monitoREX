@@ -14,8 +14,8 @@
             getProjects() {
                 this.loading = true;
 
-                Project.my().then((response) => {
-                    this.projects = response.data;
+                Project.my().then( ({data}) => {
+                    this.projects = data;
                     this.loading = false;
                 });
             }
@@ -29,12 +29,9 @@
     };
 </script>
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-6 pb-4" v-for="project in projects">
-                <project-report v-bind:project="project"></project-report>
-            </div>
-
-        </div>
-    </div>
+    <el-row>
+        <el-col :lg="8" v-for="project in projects">
+            <project-report :project="project"></project-report>
+        </el-col>
+    </el-row>
 </template>

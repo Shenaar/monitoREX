@@ -8,9 +8,9 @@
 import './bootstrap';
 import Auth from './services/Auth';
 import DateTime from './components/DateTime.vue';
-import Navbar from './components/Navbar.vue';
 import Vue from 'vue';
 import VueHighlightJS from 'vue-highlightjs';
+import ElementUI from 'element-ui';
 
 window.Vue = Vue;
 
@@ -20,19 +20,17 @@ window.router = router;
 
 Vue.component('DateTime', DateTime);
 Vue.use(VueHighlightJS);
+Vue.use(ElementUI);
 
 window.onload = function () {
 
     const app = new Vue({
         el: '#app',
         router,
-        components: {
-            Navbar,
-        },
         data: () => {
             return {
                 Auth
             };
-        }
+        },
     });
 };
