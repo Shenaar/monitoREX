@@ -10,7 +10,7 @@ import Auth from './services/Auth';
 import DateTime from './components/DateTime.vue';
 import Vue from 'vue';
 import VueHighlightJS from 'vue-highlightjs';
-import ElementUI from 'element-ui';
+import VueMaterial from 'vue-material';
 
 window.Vue = Vue;
 
@@ -20,7 +20,7 @@ window.router = router;
 
 Vue.component('DateTime', DateTime);
 Vue.use(VueHighlightJS);
-Vue.use(ElementUI);
+Vue.use(VueMaterial);
 
 window.onload = function () {
 

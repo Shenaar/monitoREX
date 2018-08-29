@@ -29,9 +29,10 @@
     };
 </script>
 <template>
-    <el-row>
-        <el-col :lg="8" v-for="project in projects">
-            <project-report :project="project"></project-report>
-        </el-col>
-    </el-row>
+    <div class="md-layout md-gutter">
+        <div v-for="project in projects" style="margin-bottom: 20px;" class="md-layout-item md-size-33 md-small-size-100 ">
+            <project-report :project="project">
+            </project-report>
+        </div>
+    </div>
 </template>

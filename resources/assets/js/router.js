@@ -17,17 +17,18 @@ const router = new VueRouter({
         path: '/',
         component: App,
         children: [{
-                path: '/',
-                component: Dashboard,
-                name: 'dashboard'
-            }, {
-                path: '/config',
-                component: Config,
-            }, {
-                path: '/projects/:projectId/reports/:reportId',
-                name: 'report.view',
-                component: Report,
-            }]
+            path: '/',
+            component: Dashboard,
+            name: 'dashboard'
+        }, {
+            path: '/config',
+            component: Config,
+            name: 'config'
+        }, {
+            path: '/projects/:projectId/reports/:reportId',
+            name: 'report.view',
+            component: Report,
+        }]
     }, {
         path: '/login',
         component: Login,

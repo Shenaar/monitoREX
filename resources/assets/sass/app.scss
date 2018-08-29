@@ -1,79 +1,38 @@
 
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+@import url("//fonts.googleapis.com/css?family=Roboto:400,500,700,400italic|Material+Icons");
 
 // Variables
 @import "variables";
 
-// Bootstrap
-@import '~element-ui/lib/theme-chalk/index.css';
-@import '~element-ui/lib/theme-chalk/display.css';
+@import '~vue-material/dist/vue-material.min.css';
+@import '~vue-material/dist/theme/default.css';
 @import '~font-awesome/scss/font-awesome.scss';
 @import '~highlight.js/styles/dracula.css';
-
-.navbar {
-  background-color: rgb(64, 158, 255);
-  color: white;
-  padding-left: 0;
-
-  .logo {
-    font-size: 20px;
-  }
-
-  ul {
-    display: inline-block;
-    height: 100%;
-    margin: 0;
-
-    &.right {
-      padding-right: 30px;
-      float: right;
-    }
-
-    &.left {
-      padding-left: 0;
-
-      li {
-        padding-right: 20px;
-      }
-    }
-
-    li {
-      display: inline-block;
-      vertical-align: middle;
-      padding: 0;
-      margin: 0;
-      line-height: 50px;
-      cursor: pointer;
-
-      &.toggle {
-        font-size: 20px;
-        border: thin white solid;
-        border-radius: 5px;
-        padding: 5px;
-        margin-left: 20px;
-        margin-right: 20px;
-        line-height: 17px;
-      }
-    }
-  }
-}
-
-.el-menu-vertical:not(.el-menu--collapse) {
-  width: 200px;
-  min-height: 400px;
-  font-size: 16px;
-}
-
-.el-menu--collapse {
-  width: 0;
-}
-
-.el-menu-item.is-active {
-  background-color: #ecf5ff;
-}
 
 body {
   overflow-y: scroll;
   margin: 0;
+}
+.md-app-internal-drawer .md-app-scroller {
+  overflow-x: hidden;
+}
+
+.main-toolbar {
+  padding: 0 16px;
+
+  > span {
+    cursor: pointer;
+  }
+}
+
+.md-drawer .md-list-item-container {
+  font-size: 16px;
+}
+
+.large-navigation-toggle {
+  @media (min-width: 600px) {
+    display: none !important;
+  }
 }
