@@ -33,9 +33,9 @@
 
 <template>
     <md-app v-if="Auth.user()">
-        <md-app-toolbar class="main-toolbar">
+        <md-app-toolbar class="md-dense main-toolbar">
             <span @click="toggleMenu" class="toggle">
-                <md-icon class="fa fa-bars" ></md-icon>
+                <md-icon>menu</md-icon>
             </span>
             <span class="md-title" @click="$router.push({ name : 'dashboard'})">MonitoREX</span>
             <div class="md-toolbar-section-end">
@@ -43,7 +43,7 @@
             </div>
 
         </md-app-toolbar>
-        <md-app-drawer :md-persistent="getPersistent()" :md-permanent="getPermanent()" :md-active.sync="menuVisible" style="width: 250px;">
+        <md-app-drawer class="main-menu" :md-persistent="getPersistent()" :md-permanent="getPermanent()" :md-active.sync="menuVisible">
             <md-toolbar class="large-navigation-toggle" md-elevation="0">
                 <span>Navigation</span>
 
@@ -55,15 +55,19 @@
             </md-toolbar>
             <md-list>
                 <md-list-item :to="{ name: 'dashboard' }">
-                    <md-icon class="fa fa-dashboard"></md-icon>
+                    <md-icon>dashboard</md-icon>
                     <span class="md-list-item-text">Dashboard</span>
                 </md-list-item>
+                <md-list-item :to="{ name: 'projects.manage' }">
+                    <md-icon>work</md-icon>
+                    <span class="md-list-item-text">Projects</span>
+                </md-list-item>
                 <md-list-item :to="{ name: 'config' }">
-                    <md-icon class="fa fa-gears"></md-icon>
+                    <md-icon>settings</md-icon>
                     <span class="md-list-item-text">Config</span>
                 </md-list-item>
                 <md-list-item @click="logout">
-                    <md-icon class="fa fa-sign-out"></md-icon>
+                    <md-icon>exit_to_app</md-icon>
                     <span class="md-list-item-text">Logout</span>
                 </md-list-item>
             </md-list>
@@ -73,3 +77,17 @@
         </md-app-content>
     </md-app>
 </template>
+
+<style scoped>
+    .main-menu {
+        width: 250px;
+    }
+
+    .md-app .md-content {
+        border-left: none;
+    }
+
+    .main-menu .md-list {
+        padding-bottom: 0;
+    }
+</style>

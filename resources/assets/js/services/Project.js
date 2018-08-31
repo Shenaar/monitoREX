@@ -15,7 +15,7 @@ const Project = {
             });
         }
 
-        let result = Api.get('/projects/available');
+        let result = Api.get('/dashboard');
 
         result.then( ({ data }) => {
             this.cache.my = data ? data : null;

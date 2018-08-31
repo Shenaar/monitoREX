@@ -27,13 +27,7 @@
     };
 </script>
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-12">
-                <div class="card card-default">
-                    <pre v-if="config" v-highlightjs><code class="javascript">{{ config }}</code></pre>
-                </div>
-            </div>
-        </div>
-    </div>
+    <md-content class="md-elevation-1">
+        <pre v-if="config" v-highlightjs><code class="javascript">{{ config }}</code></pre>
+    </md-content>
 </template>

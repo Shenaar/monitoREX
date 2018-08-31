@@ -25,6 +25,10 @@ const router = new VueRouter({
             component: Config,
             name: 'config'
         }, {
+            path: '/projects/manage',
+            component: null,
+            name: 'projects.manage'
+        }, {
             path: '/projects/:projectId/reports/:reportId',
             name: 'report.view',
             component: Report,

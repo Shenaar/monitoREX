@@ -36,3 +36,7 @@ body {
     display: none !important;
   }
 }
+
+html, body, #app, .md-app {
+  height: 100%;
+}

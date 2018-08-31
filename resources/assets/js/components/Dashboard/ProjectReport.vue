@@ -36,8 +36,8 @@
 </script>
 
 <template>
-    <div class="viewport dashboard-block">
-        <md-toolbar :md-elevation="1">
+    <md-content class="viewport dashboard-block md-elevation-2">
+        <md-toolbar :md-elevation="1" class="md-dense">
             <span class="md-title">{{ project.title }}</span>
         </md-toolbar>
         <md-list class="md-dense">
@@ -57,12 +57,13 @@
                 <md-divider></md-divider>
             </template>
         </md-list>
-    </div>
+    </md-content>
 </template>
 
 <style scoped>
-    .viewport {
-        border: 1px solid var(--md-theme-default-divider, rgba(0,0,0,0.12));
+    .md-list {
+        margin-bottom: 0;
+        padding-bottom: 0;
     }
 </style>
 

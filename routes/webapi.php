@@ -4,12 +4,13 @@ use App\Http\Controllers\FallbackController;
 use App\Http\Controllers\WebApi\Auth\LoginController;
 use App\Http\Controllers\WebApi\Auth\RegisterController;
 use App\Http\Controllers\WebApi\ConfigController;
+use App\Http\Controllers\WebApi\DashboardController;
 use App\Http\Controllers\WebApi\ProjectController;
 use App\Http\Controllers\WebApi\ReportController;
 use App\Models\Project;
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Routing\Router;
+use Illuminate\Support\Facades\Route;
 
 
 Route::prefix('/auth')->name('auth.')->group(function (Router $router) {
@@ -35,10 +36,6 @@ Route::middleware(['auth'])->prefix('/projects')->name('project.')->group(functi
         ->can('create', Project::class);
     ;
 
-    $router->get('/available', ProjectController::action('available'))
-        ->name('available')
-    ;
-
     $router->get('/key', ProjectController::action('key'))
         ->name('key')
         ->can('update', 'project')
@@ -60,6 +57,12 @@ Route::middleware(['auth'])->prefix('/projects')->name('project.')->group(functi
             ->can('listReports', 'project');
         ;
     });
+});
+
+Route::middleware(['auth'])->prefix('/dashboard')->name('dashboard.')->group(function (Router $router) {
+    $router->get('/', DashboardController::action('get'))
+        ->name('get')
+    ;
 });
 
 if (app()->isLocal()) {
