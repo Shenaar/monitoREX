@@ -57,5 +57,4 @@ class UserRegistrar implements Registrar
 
         return $user;
     }
-
 }

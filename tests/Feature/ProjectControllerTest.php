@@ -163,6 +163,7 @@ class ProjectControllerTest extends TestCase
 
         $this->actingAs($user);
 
+        /** @var Project $project */
         $project = factory(Project::class)->create([
             'user_id' => $user->id,
         ]);
@@ -183,6 +184,7 @@ class ProjectControllerTest extends TestCase
     {
         $user = factory(User::class)->create();
 
+        /** @var Project $project */
         $project = factory(Project::class)->create([
             'user_id' => $user->id,
         ]);
@@ -210,7 +212,6 @@ class ProjectControllerTest extends TestCase
 
         $this->actingAs($user);
 
-        /** @var Project $project */
         factory(Project::class, 10)->create([
             'user_id' => $user->id,
         ]);

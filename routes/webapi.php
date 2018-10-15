@@ -41,6 +41,10 @@ Route::middleware(['auth'])->prefix('/projects')->name('project.')->group(functi
         ->can('update', 'project')
     ;
 
+    $router->get('/available', ProjectController::action('available'))
+        ->name('available')
+    ;
+
     $router->put('/{project}', ProjectController::action('update'))
         ->name('update')
         ->can('update', 'project')

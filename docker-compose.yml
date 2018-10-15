@@ -6,6 +6,7 @@ services:
       dockerfile: ./docker/app.dockerfile
     container_name: monitorex-app
     working_dir: /var/www
+    user: ${USER_ID}
     volumes:
       - ./:/var/www
     environment:
@@ -58,13 +59,17 @@ services:
 
   laravel-queue-listener:
     image: monitorex_php
+    user: ${USER_ID}
     volumes_from:
       - app
+    depends_on:
+      - php
     working_dir: /var/www
     command: php artisan queue:listen -vvv
 
   npm-build:
     image: node
+    user: ${USER_ID}
     volumes_from:
       - app
     working_dir: /var/www

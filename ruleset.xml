@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<ruleset name="MyStandard">
+    <description></description>
+    <arg name="tab-width" value="4"/>
+    <rule ref="Generic.WhiteSpace.DisallowTabIndent">
+    </rule>
+    <rule ref="Generic.WhiteSpace.ScopeIndent">
+        <properties>
+            <property name="indent" value="4"/>
+            <property name="tabIndent" value="false"/>
+        </properties>
+    </rule>
+    <!-- There MUST NOT be trailing whitespace at the end of non-blank lines. -->
+    <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace">
+    </rule>
+    <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace.StartFile">
+        <severity>0</severity>
+    </rule>
+    <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace.EndFile">
+        <severity>0</severity>
+    </rule>
+    <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace.EmptyLines">
+        <severity>0</severity>
+    </rule>
+
+    <rule ref="Squiz.WhiteSpace.OperatorSpacing"/>
+
+    <rule ref="Zend.Files.ClosingTag"/>
+
+    <!-- PHP keywords MUST be in lower case. -->
+    <rule ref="Generic.PHP.LowerCaseKeyword"/>
+
+    <!-- The PHP constants true, false, and null MUST be in lower case. -->
+    <rule ref="Generic.PHP.LowerCaseConstant"/>
+
+    <!-- In the argument list, there MUST NOT be a space before each comma, and there MUST be one space after each comma. -->
+    <rule ref="Squiz.Functions.FunctionDeclarationArgumentSpacing">
+        <properties>
+            <property name="equalsSpacing" value="1"/>
+        </properties>
+    </rule>
+
+    <rule ref="Generic.Functions.FunctionCallArgumentSpacing"/>
+
+    <rule ref="Squiz.WhiteSpace.ScopeClosingBrace"/>
+    <rule ref="Squiz.ControlStructures">
+        <exclude name="Squiz.ControlStructures.InlineIfDeclaration"/>
+        <exclude name="Squiz.ControlStructures.SwitchDeclaration"/>
+    </rule>
+
+    <rule ref="PSR2"/>
+
+</ruleset>

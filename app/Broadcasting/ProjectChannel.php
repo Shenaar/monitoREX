@@ -9,8 +9,6 @@ class ProjectChannel
 {
     /**
      * Create a new channel instance.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -18,13 +16,13 @@ class ProjectChannel
     }
 
     /**
-     * Authenticate the user's access to the channel.
+     * @param User $user
+     * @param Project $project
      *
-     * @param  \App\Models\User  $user
-     * @return array|bool
+     * @return bool
      */
     public function join(User $user, Project $project)
-    {\Log::debug($user);\Log::debug($project);
+    {
         return $user->id === $project->user_id;
     }
 }

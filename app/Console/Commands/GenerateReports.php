@@ -13,7 +13,6 @@ use Faker\Generator;
 
 use Illuminate\Console\Command;
 
-
 class GenerateReports extends Command
 {
     /**
@@ -32,8 +31,6 @@ class GenerateReports extends Command
 
     /**
      * Create a new command instance.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -63,6 +60,5 @@ class GenerateReports extends Command
 
             sleep($faker->numberBetween(1, 5));
         }
-
     }
 }
